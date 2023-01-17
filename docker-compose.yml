@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: nginx-volume
+    image: nginx:latest
+    ports:
+      - '8080:80'
+      - '8081:81'
+    restart: always
+    volumes:
+      - './servers/test.conf:/etc/nginx/conf.d/test.conf'
+      - './web/test.html:/usr/share/nginx/html/test.html'
+      - 'test:/var/log/nginx'
+
+volumes:
+  test:
